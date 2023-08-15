@@ -3,9 +3,7 @@ package guru.springframework.msscbreweryservice.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.id.uuid.UuidGenerator;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -19,8 +17,7 @@ import java.util.UUID;
 @Entity
 public class Beer {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", type = UuidGenerator.class)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
     private UUID id;
 
